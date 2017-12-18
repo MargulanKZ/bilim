@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Main\LecturesController@index')->name('home');
+Route::get('/lecture/{id}','Main\LecturesController@show')->where('id','\d+')->name('lecture');
+Route::get('/lecture/test/{id}','Main\QuestionsController@test')->where('id','\d+')->name('testing');
+Route::post('/lecture/test/{id}','Main\QuestionsController@check');
 
 Route::group(['middleware'=>'guest'],function (){
     Route::get('/register','Auth\RegisterController@showRegistrationForm')->name('register');
@@ -30,13 +31,19 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/my/account','AccountController@index')->name('account');
 
 //    admin
-    Route::group(['middleware'=>'admin'],function (){
-        Route::get('/admin','Admin\AccountController@index')->name('admin');
-        Route::get('/lect','Admin\LectureController@index')->name('admin.lect');
-        Route::get('/lect/add','Admin\LectureController@add')->name('lect.add');
-        Route::get('/lect/edit/[id]','Admin\LectureController@edit')
+    Route::group(['middleware'=>'admin', 'prefix'=>'admin'],function (){
+        Route::get('/','Admin\AccountController@index')->name('admin');
+        Route::get('/lect','Admin\LecturesController@index')->name('admin.lect');
+
+        Route::get('/lect/add','Admin\LecturesController@add')->name('lect.add');
+        Route::post('/lect/add', 'Admin\LecturesController@addRequestLecture');
+
+        Route::get('/lect/edit/{id}','Admin\LecturesController@edit')
             ->where('id','\d+')
             ->name('lect.edit');
+        Route::post('/lect/edit/{id}', 'Admin\LecturesController@editRequestLecture')->where('id','\d+');
+
+        Route::delete('/lect/delete', 'Admin\LecturesController@delete')->name('lect.delete');
     });
 
 });
