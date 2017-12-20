@@ -11,7 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
-
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png"/>
     <link href="/css/dashboard.css" rel="stylesheet">
 </head>
 

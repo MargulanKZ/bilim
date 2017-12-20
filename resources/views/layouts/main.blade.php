@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png"/>
 
 
 </head>

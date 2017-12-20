@@ -2,23 +2,28 @@
 @section('content')
     <div class="col-md-9 col-sm-8 portfolio-reponsive portfolio-reponsive2">
         <div class="portfolio style4">
+            @if(count($lectures)>0)
+                @foreach($lectures as $lecture)
+                    <article class="entry">
+                        <div class="entry-post">
+                            <h3 class="entry-title"><a
+                                        href="{!! route('lecture', ['id' => $lecture->id]) !!}">{{$lecture->title}}</a>
+                            </h3>
 
-            @foreach($lectures as $lecture)
-                <article class="entry">
-                    <div class="entry-post">
-                        <h3 class="entry-title"><a href="{!! route('lecture', ['id' => $lecture->id]) !!}">{{$lecture->title}}</a></h3>
-
-                        <div class="entry-number">
-                            <div class="entry-count">
-                                <span class="count">{{$lecture->description}}</span>
-                            </div>
-                            <div class="entry-price color-green">
-                                Дата создания:<span class="green">{{$lecture->created_at->format('d-m-Y')}}</span>
+                            <div class="entry-number">
+                                <div class="entry-count">
+                                    <span class="count">{{$lecture->description}}</span>
+                                </div>
+                                <div class="entry-price color-green">
+                                    Дата создания:<span class="green">{{$lecture->created_at->format('d-m-Y')}}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </article>
-            @endforeach
+                    </article>
+                @endforeach
+            @else
+                <h1>Извините, лекции в разработке</h1>
+            @endif
 
         </div>
         <div class="row">
@@ -29,7 +34,7 @@
         <div class="pagDiv">
 
 
-                    {!! $lectures->links() !!}
+            {!! $lectures->links() !!}
 
         </div>
     </div>
