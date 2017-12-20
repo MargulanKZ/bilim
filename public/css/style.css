@@ -2630,23 +2630,23 @@ ol.comments-list {
 	padding: 8px 16px;
 }
 
-.pagination li a{
+.pagination1 li a{
 
 }
 
-.pagination li.active {
+.pagination1 li.active {
 	background-color: #4CAF50;
 	color: white;
 	border: 1px solid #4CAF50;
 }
 
-.pagination li:hover:not(.active) {background-color: #ddd;}
+.pagination1 li:hover:not(.active) {background-color: #ddd;}
 
 .question{
 	display: none;
 }
 
-.pagination{
+.pagination1{
 
 	text-align: center;
 	display: block;
@@ -2654,7 +2654,7 @@ ol.comments-list {
 	margin: 20px;
 }
 
-.pagination a{
+.pagination1 a{
 	border: 1px solid #ddd;
 	border-radius: 50%;
 	padding: 6px 12px;
@@ -2663,10 +2663,10 @@ ol.comments-list {
 	color: #428bca;
 	margin: 0 5px 0 0;
 }
-.pagination a:hover{
+.pagination1 a:hover{
 	background: #eee;
 }
-.pagination > a.nav-active{
+.pagination1 > a.nav-active{
 	background: #27ae60;
 	color: #fff;
 	border-color: #27ae60;
@@ -2704,3 +2704,8 @@ ol.comments-list {
 	text-decoration: line-through;
 	color: #ff0000;
 }
+
+.btn-log{
+	background-color: #4CAF50;
+}
+

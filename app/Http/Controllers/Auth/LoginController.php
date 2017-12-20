@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/my/account';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,7 +48,10 @@ class LoginController extends Controller
             ]);
             $remember = $request->has('remember') ? true : false;
             if(Auth::attempt(['email'=>$request->input('email'), 'password'=>$request->input('password')],$remember)){
-                return back();
+                if(Auth::user()->is_admin==1){
+                   return redirect(route('admin'));
+                }
+
 
             }
             return back()->with('error',trans('messages.auth.errorLogin'));

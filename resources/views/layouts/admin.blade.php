@@ -7,7 +7,7 @@
     <meta name="author" content="">
 
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Панель Управления</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/admin">Главная <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/admin/lect">Главная <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/">Вернуться на сайт<span class="sr-only">(current)</span></a>
@@ -46,7 +46,7 @@
                     <a class="nav-link" href="{!! route('admin.lect') !!}">Лекции</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Пользователи</a>
+                    <a class="nav-link" href="{!! route('results') !!}">Результаты</a>
                 </li>
 
             </ul>

@@ -21,7 +21,7 @@
         <input type="password" id="inputPassword" name="password_confirmation" class="form-control"
                placeholder="Повторите пароль" required>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
+        <button class="btn btn-lg btn-log btn-block" type="submit">Регистрация</button>
     </form>
 
 </div>

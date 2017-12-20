@@ -29,10 +29,10 @@ Route::group(['middleware'=>'auth'],function (){
         return redirect(route('login'));
     })->name('logout');
     Route::get('/my/account','AccountController@index')->name('account');
+    Route::get('/user/results','AccountController@user_result')->name('user.results');
 
 //    admin
     Route::group(['middleware'=>'admin', 'prefix'=>'admin'],function (){
-        Route::get('/','Admin\AccountController@index')->name('admin');
         Route::get('/lect','Admin\LecturesController@index')->name('admin.lect');
 
         Route::get('/lect/add','Admin\LecturesController@add')->name('lect.add');
@@ -44,6 +44,13 @@ Route::group(['middleware'=>'auth'],function (){
         Route::post('/lect/edit/{id}', 'Admin\LecturesController@editRequestLecture')->where('id','\d+');
 
         Route::delete('/lect/delete', 'Admin\LecturesController@delete')->name('lect.delete');
+
+        Route::get('/lect/{id}/tests','Admin\LecturesController@tests')->where('id','\d+')->name('lect.tests');
+        Route::delete('/question/delete', 'Admin\LecturesController@q_delete')->name('question.delete');
+        Route::get('/lect/{id}/tests/add','Admin\LecturesController@add_question')->where('id','\d+')->name('question.add');
+        Route::post('/lect/{id}/tests/add','Admin\LecturesController@create_question');
+
+        Route::get('/results','Admin\LecturesController@show_results')->name('results');
     });
 
 });

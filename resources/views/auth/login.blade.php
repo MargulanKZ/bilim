@@ -16,7 +16,7 @@
                     <input type="checkbox" name="remember" value="1"> Запомнить
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+            <button class="btn btn-lg btn-log btn-block" type="submit">Войти</button>
         </form>
     </div>
 @stop

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
 
 
 </head>
@@ -18,8 +19,12 @@
                 <div class="col-md-8">
                     <ul class="flat-information">
 
-                        <li><a href="">8-708-199-8224</a></li>
-                        <li><a href="">margulan.yerlan@gmail.com</a></li>
+
+                        @if(\Auth::user())
+                            <li><a href="">Здравсвтуйте, {!! Auth::user()->name !!}</a></li>
+                        @else
+                            <li><a href="">Здравсвтуйте, Гость</a></li>
+                        @endif
                     </ul>
                 </div><!-- col-md-8 -->
                 <div class="col-md-4">
@@ -41,42 +46,51 @@
 </div>
 
 
-<div class="container" style="min-height: 1000px; margin-top: 50px;">
-    <div class="row">
-        <div class="col-md-3 col-sm-4 sidebar-reponsive flat-course-sidebar">
-            <div class="sidebar">
-                <div class="widget widget-categories">
-                    <h3 class="widget-title">Меню</h3>
-                    <ul>
-                        <li><a href="{{route('account')}}">Личный кабинет</a></li>
-                        <li><a href="{{route('home')}}">Лекции</a></li>
+<aside class="sidebar-left">
 
+    <a class="company-logo" href="/"><img src="/images/logo.png"></a>
 
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div class="sidebar-links">
+
+        @if(\Auth::user() and \Auth::user()->isAdmin)
+            <a class="link-green" href="{{route('admin.lect')}}"><i class="fa fa-heart-o"></i>Панель управления</a>
+        @endif
+        <a class="link-blue" href="{!! route('user.results') !!}"><i class="fa fa-picture-o"></i>Мои результаты</a>
+        <a class="link-red" href="{{route('home')}}"><i class="fa fa-heart-o"></i>Лекции</a>
+
+    </div>
+
+</aside>
+
+<div class="main-content">
+
+    <div class="menu">
         @yield('content')
+
+
     </div>
+
 </div>
-</section>
-
-
-<div class="bottom">
-    <div class="container">
-        <div class="copyright">
-            <p>For BilimLand | created by Margulan</p>
-        </div>
-    </div>
-</div><!-- bottom -->
-
-<a href="#"></a>
-</div><!-- Boxed -->
-
-<!-- Javascript -->
-<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 
 </body>
+<!-- Javascript -->
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+    $(function () {
+
+        var links = $('.sidebar-links > a');
+
+        links.on('click', function () {
+
+            links.removeClass('selected');
+            $(this).addClass('selected');
+
+        })
+    });
+
+</script>
 </html>

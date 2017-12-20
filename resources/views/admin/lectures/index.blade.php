@@ -17,19 +17,20 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                @if(count($lectures)>0)
                     @foreach($lectures as $lecture)
                         <tr>
                             <td>{{$lecture->title}}</td>
                             <td>{{$lecture->description}}</td>
                             <td><a href="{{$lecture->video}}">{{$lecture->video}}</a></td>
                             <td>{{$lecture->created_at->format('d-m-Y H:i')}}</td>
-                            <td><a href="{!! route('lect.edit', ['id' => $lecture->id]) !!}">Редактировать</a> || <a href="javascript:;" class="delete" rel="{{$lecture->id}}">Удалить</a> </td>
+                            <td><a href="{!! route('lect.edit', ['id' => $lecture->id]) !!}">Редактировать</a> || <a
+                                        href="javascript:;" class="delete" rel="{{$lecture->id}}">Удалить</a> || <a
+                                        href="{!! route('lect.tests',['id'=>$lecture->id]) !!}">Тесты</a></td>
                         </tr>
                     @endforeach
 
-
-
+                @endif
 
 
                 </tbody>
@@ -40,20 +41,20 @@
 @stop
 @section('js')
     <script>
-        $(function(){
+        $(function () {
             $(".delete").on('click', function () {
-                if(confirm("Вы действительно хотите удалить эту лекцию ?")) {
+                if (confirm("Вы действительно хотите удалить эту лекцию ?")) {
                     let id = $(this).attr("rel");
                     $.ajax({
                         type: "DELETE",
                         url: "{!! route('lect.delete') !!}",
-                        data: {_token:"{{csrf_token()}}", id:id},
-                        complete: function() {
+                        data: {_token: "{{csrf_token()}}", id: id},
+                        complete: function () {
                             alert("Лекция успешно удалена");
                             location.reload();
                         }
                     });
-                }else{
+                } else {
                     alertify.error("Дествие отменено пользователем");
                 }
             });
